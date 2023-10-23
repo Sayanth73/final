@@ -6,7 +6,7 @@
 /*   By: sshanmug <sshanmug@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/23 15:14:41 by sshanmug          #+#    #+#             */
-/*   Updated: 2023/10/23 15:41:30 by sshanmug         ###   ########.fr       */
+/*   Updated: 2023/10/23 20:00:16 by sshanmug         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,8 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	j = 0;
 	i = 0;
 	final = create(s1, s2);
+	if (!final)
+		return (NULL);
 	while (s1[i] != '\0')
 	{
 		final[i] = s1[i];

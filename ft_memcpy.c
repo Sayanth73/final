@@ -6,7 +6,7 @@
 /*   By: sshanmug <sshanmug@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/23 15:13:54 by sshanmug          #+#    #+#             */
-/*   Updated: 2023/10/23 15:13:55 by sshanmug         ###   ########.fr       */
+/*   Updated: 2023/10/23 19:53:45 by sshanmug         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@ void	*ft_memcpy(void *dst, const void *src, size_t n)
 	unsigned char	*srccast;
 	size_t			i;
 
+	if (dst == NULL && src == NULL)
+		return (0);
 	dstcast = (unsigned char *)dst;
 	srccast = (unsigned char *)src;
 	i = 0;
