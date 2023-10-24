@@ -6,7 +6,7 @@
 /*   By: sshanmug <sshanmug@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/23 15:39:32 by sshanmug          #+#    #+#             */
-/*   Updated: 2023/10/23 15:39:34 by sshanmug         ###   ########.fr       */
+/*   Updated: 2023/10/24 20:44:37 by sshanmug         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,9 @@
 # include <string.h>
 
 /* fonction de la libc */
+char		*ft_strtrim(char const *s1, char const *set);
+void		ft_striteri(char *s, void (*f)(unsigned int, char*));
+char		*ft_substr(char const *s, unsigned int start, size_t len);
 char		*ft_strrchr(const char *s, int c);
 size_t		ft_strlcat(char *dst, const char *src, size_t dstsize);
 size_t		ft_strlcpy(char *dst, const char *src, size_t dstsize);
