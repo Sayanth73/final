@@ -1,31 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strmapi.c                                       :+:      :+:    :+:   */
+/*   ft_toupper.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sshanmug <sshanmug@student.42.fr>          +#+  +:+       +#+        */
+/*   By: sshanmug <sshanmug@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/25 22:07:08 by sshanmug          #+#    #+#             */
-/*   Updated: 2023/10/25 22:37:46 by sshanmug         ###   ########.fr       */
+/*   Created: 2023/11/02 12:10:52 by sshanmug          #+#    #+#             */
+/*   Updated: 2023/11/02 12:11:24 by sshanmug         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strmapi(char const *s, char (*f)(unsigned int, char ))
+int	ft_toupper(int c)
 {
-	char	*final;
-	int		i;
-
-	final = malloc(sizeof(char) * ft_strlen(s) + 1);
-	if (final == NULL)
-		return (NULL);
-	i = 0;
-	while (s[i] != '\0')
+	if (c >= 97 && c <= 122)
 	{
-		final[i] = f(i, s[i]);
-		i++;
+		c -= 32;
 	}
-	final[i] = '\0';
-	return (final);
+	return (c);
 }
+/*
+int main (int argc, char **argv)
+{
+	int c;
+	int i = 0;
+	if (argc == 2)
+	{
+		while (argv[1][i] != '\0')
+		{
+				c = ft_toupper(argv[1][i]);
+				write (1, &c, 1);
+				i++;
+		}
+	}
+}*/

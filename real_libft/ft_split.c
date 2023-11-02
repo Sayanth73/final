@@ -3,55 +3,45 @@
 /*                                                        :::      ::::::::   */
 /*   ft_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sshanmug <sshanmug@student.42.fr>          +#+  +:+       +#+        */
+/*   By: sshanmug <sshanmug@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/25 13:19:13 by sshanmug          #+#    #+#             */
-/*   Updated: 2023/10/26 21:24:51 by sshanmug         ###   ########.fr       */
+/*   Created: 2023/11/02 12:10:08 by sshanmug          #+#    #+#             */
+/*   Updated: 2023/11/02 12:11:24 by sshanmug         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stdio.h>
 
-static int ft_countword(char const *s, char c)
+static int	countword(char const *s, char c)
 {
-    int i;
-    int taille;
+	int	i;
+	int	count;
 
-    if (!s)
-        return 0;
-
-    // If the delimiter is '\0', return 1 if the string is not empty.
-    if (c == '\0')
-        return (1);
-
-    taille = 0;
-    i = 0;
-
-    while (s[i] != '\0')
-    {
-        while (s[i] == c)
-            i++;
-        while (s[i] != c && s[i] != '\0')
-        {
-            i++;
-            if (s[i] == '\0')
-                taille++;
-            if (s[i] == c)
-            {
-                taille++;
-                i++;
-            }
-        }
-    }
-    return taille;
+	count = 0;
+	i = 0;
+	while (s[i] != '\0' && s[i] == c)
+		i++;
+	while (s[i] != '\0')
+	{
+		if (s[i] != c && s[i] != '\0')
+		{
+			count++;
+			while (s[i] != c && s[i] != '\0')
+				i++;
+		}
+		if (s[i] == c)
+		{
+			while (s[i] == c && s[i] != '\0')
+				i++;
+		}
+	}
+	return (count);
 }
 
-
-static char *ft_strndup(const char *s, int i, size_t taille)
+static char	*ft_strndup(const char *s, int i, size_t taille)
 {
 	size_t		j;
-	char	*retour;
+	char		*retour;
 
 	retour = malloc(taille + 1);
 	if (retour == NULL)
@@ -66,7 +56,8 @@ static char *ft_strndup(const char *s, int i, size_t taille)
 	retour[j] = '\0';
 	return (retour);
 }
-char **ft_split(char const *s, char c)
+
+char	**ft_split(char const *s, char c)
 {
 	char	**tableau;
 	int		deplachaine;
@@ -74,22 +65,28 @@ char **ft_split(char const *s, char c)
 	int		i;
 
 	i = 0;
-	tableau = malloc(sizeof(char *) * (ft_countword(s, c) + 1));
+	tableau = malloc(sizeof(char *) * (countword(s, c) + 1));
 	if (tableau == NULL)
 		return (NULL);
 	deplachaine = 0;
-	while (s[deplachaine] !='\0')
+	while (s[deplachaine] != '\0')
 	{
 		while (s[deplachaine] == c && s[deplachaine] != '\0')
 			deplachaine++;
-
 		startword = deplachaine;
-
 		while (s[deplachaine] != c && s[deplachaine] != '\0')
 			deplachaine++;
-		if (startword != deplachaine)  // Ensure the word is not empty
+		if (deplachaine != startword)
 			tableau[i++] = ft_strndup(s, startword, (deplachaine - startword));
-	}	
+	}
 	tableau[i] = NULL;
 	return (tableau);
 }
+/*
+#include <stdio.h>
+int main (void)
+{
+	char tab[100] = "asa sasa a";
+	printf("%d\n", countword(tab, 32));
+	printf("%d\n", countletter(tab + 3, 32));
+}*/

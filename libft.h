@@ -6,7 +6,7 @@
 /*   By: sshanmug <sshanmug@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/23 15:39:32 by sshanmug          #+#    #+#             */
-/*   Updated: 2023/10/25 19:42:54 by sshanmug         ###   ########.fr       */
+/*   Updated: 2023/10/26 13:58:30 by sshanmug         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 # include <string.h>
 
 /* fonction de la libc */
+void		*ft_memmove(void *dst, const void *src, size_t len);
 char		*ft_strmapi(char const *s, char (*f)(unsigned int, char));
 char		**ft_split(char const *s, char c);
 char		*ft_strtrim(char const *s1, char const *set);
