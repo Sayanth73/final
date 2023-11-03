@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_putstr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sshanmug <sshanmug@student.42.fr>          +#+  +:+       +#+        */
+/*   By: sshanmug <sshanmug@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/23 15:14:19 by sshanmug          #+#    #+#             */
-/*   Updated: 2023/10/23 15:14:22 by sshanmug         ###   ########.fr       */
+/*   Created: 2023/11/02 12:10:06 by sshanmug          #+#    #+#             */
+/*   Updated: 2023/11/02 12:11:24 by sshanmug         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

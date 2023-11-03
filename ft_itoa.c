@@ -3,38 +3,35 @@
 /*                                                        :::      ::::::::   */
 /*   ft_itoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sshanmug <sshanmug@student.42.fr>          +#+  +:+       +#+        */
+/*   By: sshanmug <sshanmug@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/23 15:13:32 by sshanmug          #+#    #+#             */
-/*   Updated: 2023/10/23 19:48:35 by sshanmug         ###   ########.fr       */
+/*   Created: 2023/11/02 12:09:42 by sshanmug          #+#    #+#             */
+/*   Updated: 2023/11/02 12:11:24 by sshanmug         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static int	taille(int n)
+int	counter(int n)
 {
-	int	i;
+	int	count;
 
-	i = 0;
+	count = 0;
 	if (n == 0)
-		return (1);
-	else if (n < 0)
+		return (count + 1);
+	if (n < 0)
+		count++;
+	while (n != 0)
 	{
-		i++;
-		n *= -1;
+		n /= 10;
+		count++;
 	}
-	while (n > 0)
-	{
-		n = n / 10;
-		i++;
-	}
-	return (i);
+	return (count);
 }
 
-static char	*ft_special(int n)
+char	*cas(int c)
 {
-	if (n == 0)
+	if (c == 0)
 		return (ft_strdup("0"));
 	else
 		return (ft_strdup("-2147483648"));
@@ -42,28 +39,38 @@ static char	*ft_special(int n)
 
 char	*ft_itoa(int n)
 {
-	char	*sfinal;
-	int		c;
+	char	*retour;
 	int		is_negative;
+	int		taille;
 
-	is_negative = 0;
-	c = taille(n);
 	if (n == -2147483648 || n == 0)
-		return (ft_special(n));
-	sfinal = malloc(sizeof(char) * (c + 1));
-	if (sfinal == NULL)
+		return (cas(n));
+	taille = counter(n) + 1;
+	is_negative = 1;
+	retour = malloc(taille);
+	if (retour == NULL)
 		return (NULL);
-	sfinal[c--] = '\0';
 	if (n < 0)
-		is_negative = 1;
-	if (n < 0)
-		n *= -1;
-	while (n > 0)
 	{
-		sfinal[c--] = n % 10 + '0';
+		is_negative *= -1;
+		n *= -1;
+	}
+	retour[--taille] = '\0';
+	while (n != 0)
+	{
+		retour[--taille] = (n % 10) + 48;
 		n = n / 10;
 	}
-	if (is_negative == 1)
-		sfinal[0] = '-';
-	return (sfinal);
+	if (is_negative < 0)
+		retour[0] = '-';
+	return (retour);
 }
+/**
+#include <stdio.h>
+int main(void)
+{
+	printf("%s\n", ft_itoa(0));
+	printf("%s\n", ft_itoa(-1223));
+	printf("%s\n", ft_itoa(312131));
+}
+*/

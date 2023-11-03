@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strnstr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sshanmug <sshanmug@student.42.fr>          +#+  +:+       +#+        */
+/*   By: sshanmug <sshanmug@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/23 15:15:00 by sshanmug          #+#    #+#             */
-/*   Updated: 2023/10/23 15:38:34 by sshanmug         ###   ########.fr       */
+/*   Created: 2023/11/02 12:10:36 by sshanmug          #+#    #+#             */
+/*   Updated: 2023/11/02 12:11:24 by sshanmug         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,24 +14,21 @@
 
 char	*ft_strnstr(const char *haystack, const char *needle, size_t len)
 {
-	char	*pointeur;
 	size_t	i;
-	size_t	j;
+	char	*retour;
 
-	if (!*needle)
-		return ((char *)haystack);
-	pointeur = (char *)haystack;
 	i = 0;
-	while (i < len && pointeur[i] != '\0')
+	if (needle[0] == '\0')
+		return ((char *)haystack);
+	while (haystack[i] != '\0' && i < len)
 	{
-		if (pointeur[i] == needle[0])
+		if (haystack[i] == needle[0])
 		{
-			j = 0;
-			while (needle[j] != '\0'
-				&& pointeur[i + j] == needle[j] && (i + j) < len)
-				j++;
-			if (needle[j] == '\0')
-				return ((char *) haystack + i);
+			if (i + ft_strlen(needle) > len)
+				break ;
+			retour = (char *)haystack + i;
+			if (ft_strncmp(retour, needle, ft_strlen(needle)) == 0)
+				return (retour);
 		}
 		i++;
 	}

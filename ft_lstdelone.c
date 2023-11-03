@@ -1,33 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strmapi.c                                       :+:      :+:    :+:   */
+/*   ft_lstdelone.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sshanmug <sshanmug@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/02 12:10:31 by sshanmug          #+#    #+#             */
-/*   Updated: 2023/11/02 12:11:24 by sshanmug         ###   ########.fr       */
+/*   Created: 2023/11/02 21:59:50 by sshanmug          #+#    #+#             */
+/*   Updated: 2023/11/02 22:00:11 by sshanmug         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
+void	ft_lstdelone(t_list *lst, void (*del)(void*))
 {
-	int		taille;
-	char	*retour;
-	int		i;
-
-	i = 0;
-	taille = ft_strlen(s);
-	retour = malloc(taille + 1);
-	if (retour == NULL)
-		return (NULL);
-	while (i < taille)
+	if (lst)
 	{
-		retour[i] = f(i, s[i]);
-		i++;
+		if (del)
+		{
+			del(lst->content);
+		}
+		free(lst);
+		lst = NULL;
 	}
-	retour[i] = '\0';
-	return (retour);
 }

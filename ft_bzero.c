@@ -1,38 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atoi.c                                          :+:      :+:    :+:   */
+/*   ft_bzero.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sshanmug <marvin@42lausanne.ch>            +#+  +:+       +#+        */
+/*   By: sshanmug <sshanmug@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/23 14:02:48 by sshanmug          #+#    #+#             */
-/*   Updated: 2023/10/23 14:02:51 by sshanmug         ###   ########.fr       */
+/*   Created: 2023/11/02 12:09:18 by sshanmug          #+#    #+#             */
+/*   Updated: 2023/11/02 12:11:24 by sshanmug         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_bzero(void *s, size_t n)
+void	*ft_bzero(void *s, size_t n)
 {
-	ft_memset(s, 0, n);
+	return (ft_memset(s, 0, n));
 }
-
 /*
-#include <strings.h>
 #include <stdio.h>
-int main() {
-    char str[10] = "Hello";
-	char str2[10] = "Hello";
-
-    printf("état initinal: \n%s\n", str);
-    ft_bzero(str, 5);
-	printf("après la fonction perso: \n%s\n", str);
-	printf("état initinal: \n%s\n", str2);
-    bzero(str2, 5);
-	printf("après la fonction perso: \n%s\n", str2);
-
-
-
-    return 0;
-}
-*/
+#include <string.h>
+int main(void)
+{
+	int i = 0;
+	char s[19] = {2};
+	ft_bzero(s, 19);
+	char s2[19] = {1};
+	bzero(s2, 19);
+	
+	while (i < 19)
+	{
+		if (s[i] == s2[i])
+			printf("pareil cest carré\n");
+		else 
+			printf("ya une galere\n");
+	i++;
+	}
+}*/

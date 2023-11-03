@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_memset.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sshanmug <sshanmug@student.42.fr>          +#+  +:+       +#+        */
+/*   By: sshanmug <sshanmug@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/23 15:13:57 by sshanmug          #+#    #+#             */
-/*   Updated: 2023/10/23 15:13:59 by sshanmug         ###   ########.fr       */
+/*   Created: 2023/11/02 12:09:57 by sshanmug          #+#    #+#             */
+/*   Updated: 2023/11/02 12:11:24 by sshanmug         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,42 +14,32 @@
 
 void	*ft_memset(void *b, int c, size_t len)
 {
-	unsigned char	*s;
+	char			*s;
+	unsigned char	d;
 	size_t			i;
 
+	s = (char *)b;
 	i = 0;
-	s = (unsigned char *)b;
+	d = (unsigned char)c;
 	while (i < len)
 	{
-		s[i] = (unsigned char)c;
+		s[i] = d;
 		i++;
 	}
 	return (b);
 }
-
 /*
 #include <stdio.h>
+#include <string.h>
 int main(void)
 {
-	void *b1[100] = {0};
-	size_t taille = 0;
-	int a = 65;
-	printf("résultat fonction perso\n%s\n", 
-	(unsigned char *)ft_memset(b1, a, taille));
-	printf("résultat fonction c\n%s\n", 
-	(unsigned char *)memset(b1, a, taille));
-	taille = 98;
-
-	printf("résultat fonction perso\n%s\n",
-	(unsigned char *)ft_memset(b1, a, taille));
-	printf("résultat fonction c\n%s\n", 
-	(unsigned char *)memset(b1, a, taille));
-	taille = 100;
-
-	printf("résultat fonction perso\n%s\n", 
-	(unsigned char *)ft_memset(b1, a, taille));
-	printf("résultat fonction c\n%s\n", 
-	(unsigned char *)memset(b1, a, taille));
-
-	
+	int i = 0;
+	int s[19] = {0};
+	int c = 1233;
+	memset(s, c, 4 * (int) + 1);
+	while (s[i] != 0)
+	{
+		printf("%d", s[i]);
+		i++;
+	}
 }*/

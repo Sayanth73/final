@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sshanmug <sshanmug@student.42.fr>          +#+  +:+       +#+        */
+/*   By: sshanmug <sshanmug@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/23 15:14:34 by sshanmug          #+#    #+#             */
-/*   Updated: 2023/10/23 15:14:35 by sshanmug         ###   ########.fr       */
+/*   Created: 2023/11/02 12:10:15 by sshanmug          #+#    #+#             */
+/*   Updated: 2023/11/02 12:11:24 by sshanmug         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,29 +14,18 @@
 
 char	*ft_strdup(const char *s1)
 {
-	size_t	i;
-	size_t	taille;
-	char	*retour;
+	char	*dst;
+	int		i;
 
-	taille = ft_strlen(s1) + 1;
-	retour = malloc(sizeof(char) * taille);
-	if (retour == NULL)
-		return (NULL);
 	i = 0;
+	dst = malloc(sizeof(char) * ft_strlen(s1) + 1);
+	if (dst == NULL)
+		return (NULL);
 	while (s1[i] != '\0')
 	{
-		retour[i] = s1[i];
+		dst[i] = s1[i];
 		i++;
 	}
-	retour[i] = '\0';
-	return (retour);
+	dst[i] = '\0';
+	return (dst);
 }
-
-/*
-#include <stdio.h>
-int main(void)
-{
-	char tableau1[100] = "essai numéro 12";
-	printf("Avant l'utilisation de la fonction\n%s\n", tableau1);
-	printf("Après l'utilisation de la fonction\n%s\n", ft_strdup(tableau1));
-}*/

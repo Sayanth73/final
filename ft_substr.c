@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isdigit.c                                       :+:      :+:    :+:   */
+/*   ft_substr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sshanmug <sshanmug@student.42.fr>          +#+  +:+       +#+        */
+/*   By: sshanmug <sshanmug@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/23 15:13:13 by sshanmug          #+#    #+#             */
-/*   Updated: 2023/10/23 15:13:17 by sshanmug         ###   ########.fr       */
+/*   Created: 2023/11/02 12:10:47 by sshanmug          #+#    #+#             */
+/*   Updated: 2023/11/02 12:11:24 by sshanmug         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,3 +39,10 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 	sfinal[i] = '\0';
 	return (sfinal);
 }
+/*
+#include <stdio.h>
+int main(void)
+{
+	char tab[100] = "Le roi est mort";
+	printf("%s\n", ft_substr(tab, 3, 5));
+}*/

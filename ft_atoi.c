@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sshanmug <marvin@42lausanne.ch>            +#+  +:+       +#+        */
+/*   By: sshanmug <sshanmug@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/23 14:02:48 by sshanmug          #+#    #+#             */
-/*   Updated: 2023/10/23 14:02:51 by sshanmug         ###   ########.fr       */
+/*   Created: 2023/11/02 12:09:14 by sshanmug          #+#    #+#             */
+/*   Updated: 2023/11/02 12:11:24 by sshanmug         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,25 +14,41 @@
 
 int	ft_atoi(const char *str)
 {
-	int	resultat;
-	int	signe;
 	int	i;
+	int	negative;
+	int	retour;
 
-	signe = 1;
-	resultat = 0;
+	retour = 0;
 	i = 0;
-	while (str[i] != '\0' && (str[i] == 32 || (str[i] >= 9 && str[i] <= 13)))
-		i++;
-	if (str[i] == '-' || str[i] == '+')
+	negative = 1;
+	while (str[i] != '\0')
 	{
-		if (str[i] == '-')
-			signe *= -1;
-		i++;
+		while ((str[i] >= 9 && str[i] <= 13) || str[i] == 32)
+			i++;
+		if (str[i] == '+' || str[i] == '-')
+		{
+			if (str[i] == '-')
+				negative *= -1;
+			i++;
+		}
+		while (str[i] >= 48 && str[i] <= 57)
+		{
+			retour = (retour * 10) + (str[i] - 48);
+			i++;
+		}
+		break ;
 	}
-	while (ft_isdigit(str[i]) && str[i] != '\0')
-	{
-		resultat = (resultat * 10) + (str[i] - 48);
-		i++;
-	}
-	return (resultat * signe);
+	return (retour * negative);
 }
+/*
+#include <stdlib.h>
+#include <stdio.h>
+int main (int argc, char **argv)
+{
+	if (argc == 2)
+	{
+	printf("%d\n", atoi(argv[1]));
+	printf("%d\n", ft_atoi(argv[1]));
+	}
+	return (0);
+}*/

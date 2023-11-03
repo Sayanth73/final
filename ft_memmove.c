@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_memmove.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sshanmug <sshanmug@student.42.fr>          +#+  +:+       +#+        */
+/*   By: sshanmug <sshanmug@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/25 22:15:30 by sshanmug          #+#    #+#             */
-/*   Updated: 2023/10/26 20:48:11 by sshanmug         ###   ########.fr       */
+/*   Created: 2023/11/02 12:09:54 by sshanmug          #+#    #+#             */
+/*   Updated: 2023/11/02 12:11:24 by sshanmug         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,25 +16,20 @@ void	*ft_memmove(void *dst, const void *src, size_t len)
 {
 	char	*dstcast;
 	char	*srccast;
-	size_t	i;
 
-	if (dst == NULL && src == NULL)
+	if (src == NULL && dst == NULL)
 		return (NULL);
-	dstcast = (char *)dst;
 	srccast = (char *)src;
-	i = 0;
+	dstcast = (char *)dst;
 	if (dstcast > srccast)
 	{
-		while (len-- > 0)
-			dstcast[len] = srccast[len];
-	}
-	else
-	{
-		while (i < len)
+		while (len > 0)
 		{
-			dstcast[i] = srccast[i];
-			i++;
+			len--;
+			dstcast[len] = srccast[len];
 		}
 	}
+	else
+		ft_memcpy(dst, src, len);
 	return (dst);
 }

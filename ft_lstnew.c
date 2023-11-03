@@ -1,33 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strmapi.c                                       :+:      :+:    :+:   */
+/*   ft_lstnew.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sshanmug <sshanmug@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/02 12:10:31 by sshanmug          #+#    #+#             */
-/*   Updated: 2023/11/02 12:11:24 by sshanmug         ###   ########.fr       */
+/*   Created: 2023/11/02 21:59:35 by sshanmug          #+#    #+#             */
+/*   Updated: 2023/11/02 22:00:11 by sshanmug         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
+t_list	*ft_lstnew(void *content)
 {
-	int		taille;
-	char	*retour;
-	int		i;
+	t_list	*test;
 
-	i = 0;
-	taille = ft_strlen(s);
-	retour = malloc(taille + 1);
-	if (retour == NULL)
+	test = malloc(sizeof(t_list));
+	if (test == NULL)
 		return (NULL);
-	while (i < taille)
-	{
-		retour[i] = f(i, s[i]);
-		i++;
-	}
-	retour[i] = '\0';
-	return (retour);
+	test->content = content;
+	test->next = NULL;
+	return (test);
 }

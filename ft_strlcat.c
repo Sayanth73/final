@@ -3,50 +3,51 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strlcat.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sshanmug <sshanmug@student.42.fr>          +#+  +:+       +#+        */
+/*   By: sshanmug <sshanmug@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/23 15:14:44 by sshanmug          #+#    #+#             */
-/*   Updated: 2023/10/23 15:42:32 by sshanmug         ###   ########.fr       */
+/*   Created: 2023/11/02 12:10:24 by sshanmug          #+#    #+#             */
+/*   Updated: 2023/11/02 12:11:24 by sshanmug         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t	ft_strlcat(char *dst, const char *src, size_t dstsize)
+unsigned long	ft_strlcat(char *dst, const char *src, size_t dstsize)
 {
-	size_t	dst_len;
-	size_t	src_len;
-	size_t	i;
-	size_t	j;
+	unsigned long	i;
+	unsigned long	j;
+	unsigned long	savedst;
 
-	dst_len = ft_strlen(dst);
-	src_len = ft_strlen(src);
-	if (dstsize == 0)
-		return (src_len);
-	if (dstsize <= dst_len)
-		return (dstsize + src_len);
-	i = dst_len;
+	i = 0;
 	j = 0;
+	if (dstsize == 0)
+		return (ft_strlen(src));
+	savedst = ft_strlen(dst);
+	if (dstsize - 1 < ft_strlen(dst))
+		return (ft_strlen(src) + dstsize);
+	while (dst[i] != '\0' && i < dstsize - 1)
+	{
+		dst[i] = dst[i];
+		i++;
+	}
 	while (src[j] != '\0' && i < dstsize - 1)
 	{
-		dst[i] = src[j];
-		i++;
-		j++;
+		dst[i++] = src[j++];
 	}
 	dst[i] = '\0';
-	return (dst_len + src_len);
+	if (src[j] != '\0')
+		return (savedst + ft_strlen(src));
+	return (ft_strlen(dst));
 }
-
 /*
-#include <string.h> 
 #include <stdio.h>
-
-int main(void)
+#include <string.h>
+int main (void)
 {
-	size_t i = 18;
-	char dest[100] = "01234567";
-	char initial[11] = "0123456789";
-	printf("%lu\n", strlcat(dest, initial, i));
-	printf("%s\n", dest);
-}
-*/
+	char tab[12] = "";
+	char tab2[30] = " La paix est de retour";
+	char tab3[12] = "";
+	char tab4[30] = " La paix est de retour";
+	printf("%lu\n%s\n", strlcat(tab, tab2, 0), tab);
+	printf("%lu\n%s\n", ft_strlcat(tab3, tab2, 0), tab3);
+}*/
